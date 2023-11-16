@@ -1,0 +1,33 @@
+did that which was right in the eyes of the LORD
+doing that which was right in the eyes of the LORD
+did that which was right in the sight of the LORD
+
+
+(did|doing) that which was right in the (eyes|sight) of the LORD
+
+
+
+
+
+
+wrought evil in the eyes of the LORD
+wrought evil in the sight of the LORD
+wrought much evil in the sight of the LORD
+wrought much wickedness in the sight of the LORD
+
+was evil in the sight of the LORD
+was wicked in the sight of the LORD
+
+did evil in the sight of the LORD
+the evil that he did in the sight of the LORD
+
+doing evil in the sight of the LORD
+work evil in the sight of the LORD
+work wickedness in the sight of the LORD
+did that which was evil in the sight of the LORD
+do evil in the sight of the LORD
+doing that which was evil in the sight of the LORD
+did not that which was right in the sight of the LORD
+
+
+((wrought|work|was|did|doing|do) (that which was )?(evil|wicked|wickedness)|(the evil that he did)|(did not that which was right)) in the (eyes|sight) of the LORD

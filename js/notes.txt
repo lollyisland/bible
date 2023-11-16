@@ -1,0 +1,5 @@
+if (trimmed?) input value is empty, then don't assign datalistBooks until AFTER a character is typed
+
+add strong's et al to yellow menu
+
+multi line quick note input
