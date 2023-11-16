@@ -1,0 +1,88 @@
+html.highlight highlight
+{
+   border-bottom: var(--underline);
+}
+
+html.highlight highlight.blood
+{
+   border-bottom-color: hsla(0, 100%, 50%, var(--default-opacity));
+}
+html.highlight highlight.blue
+{
+   border-bottom-color: hsla(210, 100%, 50%, 0.75);
+}
+html.highlight highlight.crimson
+{
+   border-bottom-color: hsla(0, 100%, 40%, 1);
+   border-bottom-style: dashed;
+}
+html.highlight highlight.gold
+{
+   border-bottom-color: hsla(35, 100%, 50%, 90%);
+}
+html.highlight highlight.grass
+{
+   border-bottom-color: hsla(120, 100%, 25%, var(--default-opacity));
+}
+html.highlight highlight.green
+{
+   border-bottom-color: hsla(120, 100%, 50%, var(--default-opacity));
+}
+html.highlight highlight.guava
+{
+   border-bottom-color: hsla(0, 34%, 63%, var(--default-opacity));
+}
+html.highlight highlight.ice
+{
+   border-bottom-color: hsla(200, 100%, 63%, var(--default-opacity));
+}
+html.highlight highlight.lavender
+{
+   border-bottom-color: hsla(260, 100%, 63%, var(--default-opacity));
+}
+html.highlight highlight.pool
+{
+   border-bottom-color: hsla(180, 100%, 25%, var(--default-opacity));
+}
+
+html.highlight highlight.purple highlight.blue
+{
+   border-bottom-color: hsla(300, 100%, 50%, var(--default-opacity));
+   border-bottom-color: hsl(300, 75%, 33%);
+}
+html.highlight highlight.blue highlight.purple
+{
+   border-bottom-color: hsla(210, 100%, 50%, 0.75);
+   border-bottom-color: hsl(210, 90%, 40%);
+}
+
+html.highlight highlight.purple
+{
+   border-bottom-color: hsla(300, 100%, 50%, var(--default-opacity));
+}
+html.highlight highlight.raspberry
+{
+   border-bottom-color: hsla(345, 100%, 50%, var(--default-opacity));
+}
+html.highlight highlight.spearmint
+{
+   border-bottom-color: hsla(160, 100%, 38%, var(--default-opacity));
+}
+html.highlight highlight.white
+{
+   border-bottom-color: hsla(0, 0%, 100% var(--default-opacity));
+}
+
+god
+{
+   color: var(--color-god-speak); /* Warning : duplicated in library.js */
+}
+jesus
+{
+   color: var(--color-jesus-speak); /* Warning : duplicated in library.js */
+}
+subheading, span.comment
+{
+   opacity: 0.65; /* Warning : duplicated in library.js */
+   font-size: 0.85em; /* Warning : duplicated in library.js */
+}

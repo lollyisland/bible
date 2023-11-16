@@ -1,0 +1,131 @@
+.spark
+{
+   --hue: var(--hue-yellow);
+   --saturation: var(--saturation-yellow);
+   --lightness: var(--lightness-yellow);
+}
+#divSparkContainer
+{
+   width: var(--device-width);
+   position: absolute;
+   top: var(--small-gap);
+}
+#divSpark
+{
+   --left: 15px;
+
+   width: calc(var(--device-width) - (var(--left) * 2));
+   position: absolute;
+   height: var(--scrollbar);
+   left: var(--left);
+   z-index: 101;
+}
+#divSpark table
+{
+   width: 100%;
+   border-spacing: 0px;
+}
+#divSpark td:not(:nth-child(2))
+{
+   width: 1px;
+}
+#divSpark td:first-child
+{
+   padding-right: var(--spark-padding);
+}
+#divSpark td:last-child
+{
+   padding-left: var(--spark-padding);
+}
+#divSparkLeft
+{
+   background: 
+      -webkit-linear-gradient(
+         left, 
+         hsl(var(--hue-blue), var(--saturation-blue), calc(var(--lightness-blue) * 0.5)) 0%, 
+         hsl(var(--hue-blue), var(--saturation-blue), calc(var(--lightness-blue) * 0.5)) calc(100% - 30px), 
+         hsl(0, 100%, 50%) calc(100% - 15px), 
+         hsl(43, 100%, 75%) 100%);
+
+   background: 
+      -webkit-linear-gradient(
+         left, 
+         black 0%, 
+         black calc(100% - 30px), 
+         hsl(0, 100%, 50%) calc(100% - 15px), 
+         hsl(43, 100%, 75%) 100%);
+
+   height: var(--scrollbar);
+   float: left;
+   width: 0%;
+   z-index: 3;
+   position: relative;
+   border: 1px solid hsla(var(--hue-blue), var(--saturation-blue), calc(var(--lightness-blue) * 1.33));
+   border-radius: var(--scrollbar);
+}
+#divSparkRight
+{
+   height: var(--scrollbar);
+   float: left;
+   width: 100%;
+   position: relative;
+   z-index: 0;
+   border: 1px solid hsla(var(--hue-blue), var(--saturation-blue), calc(var(--lightness-blue) * 1.33));
+   border-left: none;
+   border-radius: 0px var(--scrollbar) var(--scrollbar) 0px;
+
+   border: none;
+   height: 2px;
+   background: hsla(0, 0%, 0%, 0.5);
+   top: calc(var(--scrollbar) * 0.5);
+
+   height: 1px;
+}
+#divSparkHighlight
+{
+   display: none;
+
+   position: absolute;
+   z-index: 102;
+   xxxheight: var(--scrollbar);
+   xxxwidth: 10px;
+   xxxbackground: -webkit-linear-gradient(left, hsla(0, 100%, 68.8%, 0.0) 0%, hsla(0, 100%, 68.8%, 1.0) 100%);
+   xxxbackground: 
+      -webkit-linear-gradient(
+         left, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 0.0) 0%, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 1.0) 100%);
+   xxx-webkit-filter: drop-shadow(2px 0px 3px #FFFFFF) drop-shadow(2px 0px 3px #FFFFFF);
+   xxxleft: 1000px;
+   xxxtop: calc(var(--small-gap) + 2.75px);
+   xxxborder-radius: var(--scrollbar);
+
+   top: -4px;
+   width: 20px !important;
+   height: 20px;
+   filter: brightness(5);
+   margin-left: 8px;
+   background-image: url("../images/spark1.png");
+   background-size: 20px;
+
+   xxxanimation: animate-spark 3s steps(10) infinite;
+}
+
+@keyframes animate-spark
+{
+   100%
+   {
+      transform: rotate(2100deg);
+   }
+}
+
+#divStatCurrent, #divStatTotal
+{
+   color: hsla(0, 0%, 100%, 1.0);
+   font-size: 7px;
+   min-width: 7px;
+}
+div.find:not([data-group=search]) .spark
+{
+   display: none;
+}

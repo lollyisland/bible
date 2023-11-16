@@ -1,0 +1,103 @@
+.storm.blueberry .ZebraDialog_ButtonsOuter
+{
+   background-color: hsla(var(--theme-hue), var(--theme-saturation), 30%, 1) !important;
+}
+.blueberry, .blueberry .ZebraDialog_Body, .blueberry input
+{
+   font-size: 16px !important;
+}
+.blueberry .ZebraDialog_Title
+{
+   border-width: 0px;
+   background-color: hsl(var(--hue-color-raspberry), var(--saturation-color-raspberry), var(--lightness-color-raspberry));
+}
+.blueberry .ZebraDialog_BodyOuter, .blueberry .ZebraDialog_ButtonsOuter
+{
+   border-width: 0px;
+}
+.blueberry .ZebraDialog_Buttons a
+{
+   font-size: 16px !important;
+   float: none;
+}
+.blueberry .ZebraDialog_ButtonsOuter img
+{
+   height: var(--height-button-img);
+   vertical-align: middle;
+   margin-top: -5px;
+}
+.blueberry .ZebraDialog_Close
+{
+   text-decoration: none;
+   border-style: none;
+}
+.blueberry .ZebraDialog_Body
+{
+   font-weight: bold;
+   border: none;
+}
+
+.blueberry .ZebraDialog_Buttons
+{
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+}
+.blueberry .ZebraDialog_Buttons > a:nth-last-child(1)
+{
+   background: hsl(var(--hue-green), var(--saturation-green), var(--lightness-green)) !important;
+}
+.blueberry .ZebraDialog_Buttons > a:nth-last-child(2)
+{
+   background: hsl(var(--hue-red), var(--saturation-red), var(--lightness-red)) !important;
+}
+.blueberry .ZebraDialog_Buttons > a:nth-last-child(3)
+{
+   background: hsl(var(--hue-black), var(--saturation-black), var(--lightness-black)) !important;
+}
+
+.blueberry blockquote
+{
+   -webkit-margin-before: 0em;
+   -webkit-margin-after: 0em;
+   -webkit-margin-start: 0px;
+   -webkit-margin-end: 0px;
+}
+
+.noicon .ZebraDialog_Icon
+{
+   background-image: none;
+   padding: 20px;
+}
+
+.ZebraDialogOverlay
+{
+   xxxbackdrop-filter: blur(10px); /* Looks terrible */
+}
+
+/* ---------- */
+
+div.ZebraDialogBackdrop
+{
+   background: var(--theme-storm-dark);
+   opacity: 0.5 !important;
+}
+div.ZebraDialog
+{
+   xxxopacity: 0.75 !important;
+}
+input.ZebraDialog_Prompt_Input
+{
+   background-color: var(--theme-storm);
+   color: white;
+   xborder: 2px solid black;
+   font-size: 5vw;
+}
+div.ZebraDialog_Title
+{
+   font-size: 6vw;
+}
+div.ZebraDialog_Body
+{
+   font-size: 5vw;
+}

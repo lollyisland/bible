@@ -1,0 +1,137 @@
+.ql-editor
+{
+   padding: 1em;
+   height: 100%;
+   width: 100%;
+}
+.ql-toolbar
+{
+   background-color: hsl(var(--theme-hue), var(--theme-saturation), var(--theme-lightness));
+}
+.ql-snow .ql-picker.ql-size, .ql-snow .ql-picker.ql-header
+{
+   width: var(--ql-picker-width);
+}
+.ql-snow .ql-picker.ql-font
+{
+   width: var(--ql-picker-width);
+}
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button, .ql-snow .ql-color-picker, .ql-snow .ql-icon-picker, .ql-snow .ql-icon-picker .ql-picker-item
+{
+   --size: 24px;
+   --mult: 1.5;
+   --mult: 1.24;
+   --height: calc(var(--size) * var(--mult));
+   --width-height-ratio: 1.25;
+
+   width: calc(var(--height) * var(--width-height-ratio));
+   height: var(--height);
+}
+.ql-snow .ql-color-picker .ql-picker-item
+{
+   width: var(--size);
+   height: var(--size);
+}
+.ql-snow .ql-color-picker .ql-picker-options
+{
+   --column-count: 7;
+   --margin: 2px;
+   --padding: 5px;
+   --border: 1px;
+
+   width: calc((var(--column-count) * (var(--size) + (var(--margin) * 2))) + ((var(--padding) + var(--border)) * 2))
+}
+.ql-snow .ql-picker
+{
+   font-size: 20px;
+}
+.ql-snow .ql-picker.ql-header .ql-picker-label::before
+{
+   content: "Normal text";
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label::before
+{
+   content: "Normal size";
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=large]::before
+{
+   content: "Large size";
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=huge]::before
+{
+   content: "Huge size";
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=small]::before
+{
+   content: "Small size";
+}
+.ql-toolbar svg, .ql-upload, .ql-divider
+{
+   -webkit-filter: invert(1) brightness(2);
+}
+.ql-picker-item svg
+{
+   -webkit-filter: none;
+}
+#ql-picker-options-5 svg *
+{
+   stroke: white !important;
+}
+.ql-toolbar .ql-picker-label
+{
+   color: white !important;
+   font-weight: bold;
+   outline: none;
+}
+.ql-toolbar.ql-snow, .ql-container.ql-snow
+{
+   border: none;
+}
+.ql-toolbar.ql-snow .ql-formats
+{
+   padding-bottom: var(--gap);
+}
+.ql-toolbar.ql-snow
+{
+   padding-bottom: 0px;
+   position: fixed;
+   z-index: 1;
+}
+.ql-upload
+{
+   background-image: url("../images/upload.svg") !important;
+   background-size: 100% 100% !important;
+}
+.ql-divider
+{
+   --vertical-padding: 3px;
+   --horizontal-padding: 5px;
+
+   background-image: url("../images/divider1.svg") !important;
+   background-size: calc(100% - (var(--horizontal-padding) * 2)) calc(100% - (var(--vertical-padding) * 2)) !important;
+   background-repeat: no-repeat !important;
+   background-position: center !important;
+}
+
+.ql-toolbar button.ql-active .ql-stroke,
+.ql-toolbar .ql-picker-label.ql-active .ql-stroke
+{
+   stroke: var(--toolbar-button-active-color) !important;
+}
+.ql-toolbar button.ql-active .ql-fill
+{
+   fill: var(--toolbar-button-active-color) !important;
+}
+.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke
+{
+   stroke: var(--toolbar-button-active-color) !important;
+}
+.ql-editor.ql-blank::before
+{
+   animation-name: animate-placeholder-color, animate-placeholder-margin;
+   animation-duration: 0.5s, 0.7s;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+   animation-timing-function: ease-in-out;
+   text-align: center;
+}

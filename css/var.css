@@ -1,0 +1,166 @@
+:root
+{
+   --gap: 8px;
+   --medium-gap: calc(var(--gap) * 0.5);
+   --small-gap: calc(var(--gap) * 0.25);
+   --scrollbar: 4px;
+   --lightness-diff: 0.2;
+
+   --default-opacity: 0.5;
+   --underline: 2px solid rgba(255, 255, 255, var(--default-opacity));
+
+   --menu-item-size: 57px; /* This allows for 5 coloured bar menus on my phone */
+
+   --default-font: Arial;
+
+   --hue-color-raspberry: 345;
+   --saturation-color-raspberry: 100%;
+   --lightness-color-raspberry: 50%;
+
+   --color-raspberry: #FF0040;
+   --color-red: #FF3000;
+   --color-orange: orange;
+   --color-yellow: #FFD000;
+   --color-green: hsl(128, 64%, 41%);
+   --color-blue: hsl(212, 80%, 43%);
+   --color-purple: #8000C0;
+
+   --color-dark-raspberry: hsl(var(--hue-color-raspberry), var(--saturation-color-raspberry), calc(var(--lightness-color-raspberry) * (1 - var(--lightness-diff))));
+   --color-light-raspberry: hsl(var(--hue-color-raspberry), var(--saturation-color-raspberry), calc(var(--lightness-color-raspberry) * (1 + var(--lightness-diff))));
+
+   --theme-hue: 201;
+   --theme-saturation: 12.5%;
+   --theme-lightness: 20%;
+
+   --hue-red: 0;
+   --saturation-red: 67.2%;
+   --lightness-red: 49%;
+
+   --hue-orange: 30;
+   --saturation-orange: 100%;
+   --lightness-orange: 50%;
+
+   --hue-yellow: 43;
+   --saturation-yellow: 100%;
+   --lightness-yellow: 50%;
+
+   --hue-green: 105;
+   --saturation-green: 67.2%;
+   --lightness-green: 49%;
+
+   --hue-blue: 199;
+   --saturation-blue: 67.2%;
+   --lightness-blue: 49%;
+
+   --hue-search-blue: 217;
+   --saturation-search-blue: 96.7%;
+   --lightness-search-blue: 64.3%;
+
+   --hue-purple: 300;
+   --saturation-purple: 67.2%;
+   --lightness-purple: 30%;
+
+   --hue-black: 0;
+   --saturation-black: 0%;
+   --lightness-black: 10%;
+
+   --hue-storm: 200;
+   --saturation-storm: 15%;
+   --lightness-storm-background: 25%;
+   --theme-storm: hsl(var(--hue-storm), var(--saturation-storm), var(--lightness-storm-background));
+   --theme-storm-dark: hsl(var(--hue-storm), var(--saturation-storm), 10%);
+
+   --drop-shadow: drop-shadow(0px 0px 3px #000000);
+   --drop-shadow-top: drop-shadow(0px -3px 3px #000000);
+   --drop-highlight: drop-shadow(0px 0px 3px #FFFFFF);
+   --drop-highlight-alt: drop-shadow(0px 0px 13px #FFFFFF);
+
+   --html-background-color: hsl(200, 12.5%, 90%);
+   --html-background-color-medium: hsl(200, 12.5%, 30%);
+   --html-background-color-dark: hsl(200, 12.5%, 15%); /* Lightness: 20% seems too bright; 12.5% seems too dark (even though that is what Hymn app uses) */
+   --html-background-color-darker: hsl(200, 12.5%, 10%);
+
+   --body-padding: var(--gap) 0px 0px 0px;
+   --body-margin: 0px;
+   --body-font-size: 11px;
+   --body-background-color: hsl(var(--theme-hue), var(--theme-saturation), 25%);
+   --body-z-index: 0;
+
+   --header-height: 57px;
+   --header-field-opacity: 0.5;
+   --header-margin: 4px;
+
+   --highlight: drop-shadow(0px 0px 0.25px hsl(0, 0%, 95%)); /* Has to be the same colour as heading background so bookmark doesn't obscure if eg Acts 1 is bookmarked */
+   --heading-filter:
+      var(--highlight) 
+      var(--highlight) 
+      var(--highlight) 
+      var(--highlight) 
+      var(--highlight);
+
+   --input-text-font-size: calc(var(--body-font-size) * 2);
+
+   --section-height-original: calc(5 * var(--input-text-font-size));
+   --section-height: var(--section-height-original);
+   --section-td-padding: 1em;
+   --section-img-height: calc(var(--section-height-original) - var(--gap));
+   --section-img-speech-height: calc((var(--section-height-original) - (var(--section-td-padding) * 2)) / 3);
+
+   --main-height: calc(var(--device-height) - (var(--header-height) + var(--section-height) + var(--gap)));
+   --main-background-color: hsl(var(--theme-hue), var(--theme-saturation), 25%);
+
+   --height-button-img: 30px;
+
+
+   --__width: 1920px;
+   --__height: 1200px;
+   --__mult: 1.5;
+   --wallpaper-size: calc(var(--__width) * (var(--__height) / (var(--device-height) * var(--__mult)))) calc(var(--device-height) * var(--__mult));
+
+   --spark-table-margin-top: -4px;
+   --spark-padding: 4px;
+   --spark-top: calc(var(--header-height) - 4px - var(--spark-table-margin-top));
+
+   --emoji-img-height: 2em;
+
+   --select-quote-division: 50%;
+   --select-font-size: 2rem;
+
+   --selection-opacity: 0.15;
+
+   --book-image: url("../images/book.svg");
+   --notes-image: url("../images/notes.svg");
+   --strongs-image: url("../images/strongs01.svg?version=2");
+   --commentary-image: url("../images/commentary.svg?version=1");
+   --commentary-select-image: url("../images/commentary-select.svg?version=1");
+   --write-image: url("../images/write.svg?version=2");
+   --lock-image: url("../images/lock.svg");
+   --speech-image: url("../images/speech03.svg");
+   --search-image: url("../images/search2.svg?version=2");
+   --find-image: url("../images/pin2.svg?version=2");
+   --arrow-image: url("../images/arrow.svg?version=5");
+   --arrowTop-image: url("../images/arrowTop.svg?version=4");
+   --filter-image: url("../images/selection.svg?version=1");
+
+   --user-font-size: 1.25rem;
+
+   --ql-picker-width: 180px;
+
+   --note-background-color: hsl(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow));
+
+   --editor-margin-top: 85px;
+
+   --toolbar-button-active-color: rgb(0, 220, 255);
+
+   --parallel-version: "WEB";
+
+   --invert: invert(0.6);
+
+   --color-no-scroll: hsla(0, 0%, 100%, 0.35);
+
+   --spark-gap: 3px;
+
+   --icon-width: 48px;
+
+   --menu-positioning-method: absolute; /* some issues with fixed; */
+}

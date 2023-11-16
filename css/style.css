@@ -1,0 +1,2134 @@
+html:not(.dark)
+{
+   --button-opacity: 1;
+   --highlight-opacity: 0.25;
+   --color-god-speak: hsl(240, 100%, 78%);
+   --color-jesus-speak: hsl(0, 100%, 69%);
+   --placeholder-intensity: 0;
+   --placeholder-color: rgba(0, 0, 0, 0.25);
+
+   background-color: var(--html-background-color);
+}
+html.dark
+{
+   --button-opacity: 1;
+   --highlight-opacity: 0.25;
+   --color-god-speak: hsl(240, 100%, 78%);
+   --color-jesus-speak: hsl(0, 100%, 69%);
+   --placeholder-intensity: 255;
+   --placeholder-color: rgba(255, 255, 255, 0.5);
+
+   background-color: var(--html-background-color-dark);
+}
+
+body
+{
+   margin: var(--body-margin);
+   font-family: var(--default-font);
+   font-size: var(--body-font-size);
+}
+
+section.editor
+{
+   position: relative;
+   background-color: var(--note-background-color);
+   font-size: var(--input-text-font-size);
+}
+section.editor:not(.full)
+{
+   height: var(--section-height);
+}
+section.editor.full
+{
+   height: calc(100% - var(--header-height) - var(--gap)) !important;
+
+   position: absolute;
+   width: 100%;
+   height: 100% !important;
+   top: 0px;
+   z-index: 1;
+}
+section.editor.blur:not(".__invisible")
+{
+   filter: grayscale(0.5);
+}
+section.editor.blur .blurs
+{
+   opacity: 0.25;
+}
+section.editor table
+{
+   word-break: break-word;
+}
+section.editor td
+{
+   padding: 0px;
+   vertical-align: middle;
+}
+
+html:not(.inline) div.note
+{
+   display: none;
+}
+div.note, div.verses > div.strongs
+{
+   --height: calc(var(--device-height) * 0.5);
+   --heading-height: 2.5em;
+   --heading-height: 1.5em;
+
+   --size: 30px;
+   --radius-1: calc(var(--size) * 0.5);
+   --radius-2: calc(var(--radius-1) * 0.5);
+   --border-width: 1px;
+   --border-style: solid;
+
+   background-color: var(--note-background-color);
+   color: black;
+   min-height: calc(3em + var(--heading-height));
+   max-height: var(--height);
+   font-size: var(--user-font-size) !important;
+
+   border-width: var(--border-width) !important;
+   border-style: var(--border-style);
+   border-color: hsla(0, 0%, 100%, 0.5);
+   border-radius: var(--radius-2);
+   border-top-left-radius: var(--radius-1);
+}
+div.verses > div.strongs
+{
+   overflow-y: scroll;
+}
+div.note div.ql-editor
+{
+   max-height: calc(var(--height) - var(--heading-height));
+}
+div.inlineHeading
+{
+   --padding-top: 0.5em;
+   --padding-top: 0px;
+
+   font-weight: bold;
+   padding-top: var(--padding-top);
+   background-color: hsla(0, 0%, 100%, 0.5);
+
+   border-top-right-radius: var(--radius-2);
+   border-top-left-radius: var(--radius-1);
+}
+div.ql-editor.special::-webkit-scrollbar-thumb
+{
+   background-color: black;
+}
+div.ql-editor.special:not(.scrolling)::-webkit-scrollbar-thumb
+{
+   background-color: hsla(0, 0%, 0%, 0.25);
+}
+div.note a
+{
+   text-decoration-color: hsla(0, 0%, 0%, 0.25);
+   color: inherit;
+}
+
+#tdEditor
+{
+   vertical-align: top;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   display: block;
+   overflow-x: hidden;
+}
+#trEditorHeading
+{
+   height: 2rem;
+   line-height: 150%;
+}
+#tdEditorHeading
+{
+   font-size: 2rem !important;
+   padding: var(--gap) 0px;
+}
+#divEditor
+{
+   font-size: var(--user-font-size);
+   width: 100%;
+   height: calc(100% - var(--editor-margin-top));
+   bottom: 0px;
+   position: absolute;
+}
+
+main
+{
+   --margin: var(--gap);
+
+   width: calc(100% - (var(--margin) + var(--scrollbar)));
+   height: calc(100% - (var(--margin) * 2));
+   height: 100%;
+   padding: 0px var(--scrollbar) 0px var(--margin);
+   overflow-x: hidden;
+   overflow-y: scroll;
+   position: relative; /* Necessary for scrollBy function to work */
+   position: fixed;
+}
+main.no-scroll
+{
+   overflow-y: hidden;
+   padding: 0px var(--margin) !important;
+}
+main > table
+{
+   table-layout: fixed;
+}
+main.edit div.fill
+{
+   height: var(--main-height);
+}
+main.edit
+{
+   overflow-y: hidden;
+   background-color: rgba(0, 0, 0, 0.75);
+}
+main.edit div.cover,
+body.menu-active div.cover,
+body.link-menu-active div.cover,
+body.summary-edit div.cover
+{
+   z-index: calc(var(--body-z-index) + 1);
+}
+body.menu-active div.cover,
+body.link-menu-active div.cover,
+body.summary-edit div.cover
+{
+   background-color: hsla(0, 0%, 0%, 0.5);
+}
+div.cover
+{
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   left: 0px;
+   top: 0px;
+   z-index: calc(var(--body-z-index) - 2);
+}
+
+/*body.touch main div.heading span.heading
+{
+   opacity: 0.25;
+}*/
+
+html.dark main #divVersesContainer > div:not(.parallel) > p, 
+html:not(.dark) main #divVersesContainer > div > p.selected, /* #highlight */
+html.dark div.summary
+{
+   --shadow-color: hsla(0, 0%, 0%, 0.5);
+
+   color: white;
+}
+html.dark main #divVersesContainer > div.parallel > p, 
+html.dark main #divVersesContainer > div.parallel > div.summary
+{
+   --shadow-color: hsla(0, 0%, 100%, 0.5);
+
+   color: black;
+}
+main #divVersesContainer > div.parallel > div:nth-child(1)
+{
+   padding-top: 1em;
+}
+html:not(.dark) main #divVersesContainer > div > p,
+html:not(.dark) div.summary
+{
+   color: hsl(0, 0%, 20%);
+}
+main #divVersesContainer > div > p
+{
+   font-size: var(--user-font-size) !important;
+   line-height: 150% !important;
+   text-align: justify;
+   margin-block-start: 0px;
+   margin-block-end: 0px;
+   position: relative;
+   padding: 0 4px;
+}
+main #divVersesContainer > div > p:first-child
+{
+   margin-block-start: 0px;
+}
+main #divVersesContainer > div > p:last-child
+{
+   margin-block-end: 0px;
+}
+div.summary
+{
+   --x: 0;
+   --y: 50%;
+
+   font-size: 0.8rem !important;
+   line-height: 125% !important;
+   text-align: center;
+   position: relative;
+   padding: 0 4px;
+   letter-spacing: 0.2em;
+   word-spacing: 0.2em;
+   text-transform: uppercase;
+   opacity: 0.5;
+   margin-block-start: 1em;
+   margin-block-end: 1em;
+
+   background-size: cover;
+   background-repeat: no-repeat;
+   opacity: 1;
+   padding: 1em 0;
+   margin: 0;
+   background-position: var(--x) var(--y);
+
+   margin: 0 -8px;
+
+   user-select: none;
+}
+div.summary span
+{
+   --drop-shadow: drop-shadow(0px 0px 0.5px var(--shadow-color));
+
+   xfilter: var(--drop-shadow) var(--drop-shadow);
+   background: var(--shadow-color);
+   border-radius: 1em;
+   padding: 0.5em;
+   opacity: 0.75;
+
+   display: inline-block;
+   width: calc(100% - 3em);
+}
+
+main div.heading
+{
+   color: white;
+   background: hsl(var(--hue-red), var(--saturation-red), var(--lightness-red)) !important;
+   background: hsl(var(--hue-color-raspberry), var(--saturation-color-raspberry), var(--lightness-color-raspberry)) !important;
+   background: var(--html-background-color-medium) !important;
+   background: hsl(0, 0%, 95%) !important;
+
+   /*--hue: 0;
+   --saturation: 0%;
+   --lightness: 95%;
+   background: 
+      -webkit-linear-gradient(
+         top, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 1.0) 0%, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 0.9) 100%) !important; */ /* #transparentHeader */
+   xxxbackground: hsla(var(--hue), var(--saturation), var(--lightness), 0.8) !important;
+   xxxbackdrop-filter: blur(10px);
+
+   font-size: 2rem !important;
+   line-height: 150% !important;
+   text-align: center;
+
+   blueredthemebackground: linear-gradient(90deg, 
+      hsl(var(--hue-red), var(--saturation-red), var(--lightness-red)), 
+      hsl(var(--hue-red), var(--saturation-red), var(--lightness-red)) 5%, 
+      hsl(0, 0%, 95%) 25%, 
+      hsl(0, 0%, 95%) 75%, 
+      hsl(var(--hue-blue), var(--saturation-blue), var(--lightness-blue)) 95%,
+      hsl(var(--hue-blue), var(--saturation-blue), var(--lightness-blue))) 
+      !important;
+}
+main div.heading > *:not(hr)
+{
+   filter: var(--invert);
+}
+span.heading /* #redBookmark */
+{
+   filter: invert(0) !important;
+}
+span.heading > span /* #redBookmark */
+{
+   filter: var(--invert);
+}
+main div.heading span.range
+{
+   opacity: 0.5;
+   font-size: calc(0.5rem + 0.15em); /* Make the font a little bit bigger when scrolled down */
+   margin-left: 0.5em;
+   position: absolute;
+
+   /* #bodge...
+   width: fit-content;*/  /* fit-content no longer works since about September 2019 */
+   width: 200px;
+   text-align: left; /* ...#bodge */
+}
+
+#tdChapter.bookmark > div.heading > span.heading:before,
+#tdChapter.reading > div.heading > span.heading:before
+{
+   --size: 1.3em;
+   --size: 2.2em;
+
+   content: "";
+   background-size: var(--size);
+   display: inline-block;
+   width: var(--size);
+   height: var(--size);
+   margin-left: calc((var(--size) + var(--gap)) * -1);
+   margin-right: var(--gap);
+   margin-top: 0px;
+   vertical-align: middle;
+   z-index: 1;
+   position: absolute;
+
+/* Keep for thread image
+   --size: 2.3em;
+   --gap: -1.5em;
+   transform: scale(-0.75, -1);
+
+   --gap: -1.2em;
+   transform: scale(-0.75, -1.5) rotate(45deg);
+   opacity: 0.65;
+*/
+}
+#tdChapter.reading > div.heading > span.heading:before
+{
+   color: #5d2525;
+}
+#tdChapter.reading.count-2 > div.heading > span.heading:before
+{
+   content: "2"; /* January 1 */
+}
+#tdChapter.reading.count-3 > div.heading > span.heading:before
+{
+   content: "3"; /* January 2 */
+}
+#tdChapter.reading.count-4 > div.heading > span.heading:before
+{
+   content: "4"; /* March 16 */
+}
+#tdChapter.reading.count-5 > div.heading > span.heading:before
+{
+   content: "5"; /* March 13 */
+}
+
+#tdChapter.bookmark > div.heading > span.heading:before,
+#tdChapter.reading > div.heading > span.heading:before
+{
+   xxxbackground-image: url("../images/bookmark2.svg");
+   background-image: url("../images/bookmark2red.svg");
+   xxxbackground-image: url("../images/thread.svg");
+}
+#tdChapter.reading > div.heading > span.heading:before
+{
+   filter: hue-rotate(65deg) saturate(345%) brightness(200%); /* Yellow */
+   filter: hue-rotate(53deg) saturate(345%) brightness(214%); /* Orange */
+}
+/*html.locked #tdChapter > div.heading > span.heading:after
+{
+   --original-size: 0.5em;
+   --size: var(--original-size);
+   --margin: var(--size);
+
+   content: "";
+   background-image: var(--lock-image);
+   background-size: var(--size);
+   display: inline-block;
+   width: var(--size);
+   height: var(--size);
+   xxxvertical-align: text-top;
+   position: absolute;
+   xxxright: calc((var(--original-size) * 2) + var(--margin));
+   right: -1em;
+   xxxtop: var(--margin);
+   top: var(--small-gap);
+   opacity: 0.5;
+}*/
+/*html.locked #tdChapter > div.heading > span.heading:after*/
+html.locked #tdChapter > div.heading:after
+{
+   --offset: 0.1em;
+   --original-size: calc(1.5em - (var(--offset) * 2));
+   --size: var(--original-size);
+
+   content: "";
+   background-image: var(--lock-image);
+   display: block;
+   position: absolute;
+   opacity: 0.15;
+   top: var(--offset);
+   width: var(--size);
+   height: var(--size);
+   background-size: var(--size);
+   left: calc(50% - (var(--size) * 0.5));
+   filter: var(--invert);
+}
+
+/*html.locked body.lock #tdChapter > div.heading > span.heading:after
+{
+   --size: calc(var(--original-size) * 2);
+   --margin: calc(var(--original-size) * 0.5);
+
+   opacity: 1;
+}*/
+html.locked body.lock #tdChapter > div.heading:after
+{
+   --drop-shadow-match: drop-shadow(0px 0px 1px hsl(0, 0%, 95%));
+
+   opacity: 1;
+   filter: var(--invert) var(--heading-filter) !important;
+}
+html.locked body.lock span.heading
+{
+   xxxopacity: 0.5;
+}
+
+div.heading
+{
+   position: fixed;
+   width: calc(100% - (var(--scrollbar) * 2));
+   top: 0px;
+   left: var(--scrollbar);
+   left: 0px;
+   padding: 0px var(--scrollbar);
+   z-index: 1;
+}
+div.heading.small
+{
+   background-color: var(--html-background-color);
+}
+html.dark div.heading.small
+{
+   background-color: var(--html-background-color-dark);
+}
+div.heading div.book, div.heading div.filter
+{
+   background-size: var(--size);
+   position: absolute;
+   width: var(--size);
+   height: var(--size);
+   top: var(--margin);
+   z-index: 1;
+   cursor: pointer;
+
+   blueredthemeopacity: 0.85;
+}
+div.heading div.book
+{
+   --size: 1em;
+   --margin: 0.25em;
+
+   background-image: var(--book-image);
+   xxxleft: calc(var(--margin) * 1.5);
+   left: var(--margin);
+   filter: var(--invert) var(--heading-filter) !important;
+
+   filter: var(--invert) !important;
+   xxxmix-blend-mode: multiply;
+
+   blueredthemefilter: brightness(1) !important;
+}
+div.heading div.filter
+{
+   --size: 1em;
+   --margin: 0.25em;
+
+   background-image: var(--search-image);
+   right: var(--margin);
+   text-align: center;
+
+   blueredthemefilter: brightness(1) !important;
+}
+div.heading div.filter:hover
+{
+   animation: animate-transform 1s;
+}
+@keyframes animate-transform
+{
+   0%
+   {
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+   }
+   100%
+   {
+      transform: rotate(360deg) scale(0.65);
+      opacity: 0;
+   }
+}
+div.heading div.filter > div
+{
+   position: relative;
+   width: calc(100% - 1px); /* This is so the character appears centered in the off-centred appearance of the image */
+   height: 100%;
+   display: none;
+}
+div.heading div.filter > div > div.part
+{
+   font-size: 0.25em;
+   position: absolute;
+   top: -100%;
+   width: 100%;
+}
+div.heading div.filter > div > div.arrow
+{
+   background-image: url("../images/doublearrow.svg?version=2");
+   background-size: var(--size);
+   position: absolute;
+   width: var(--size);
+   height: var(--size);
+   opacity: 0;
+}
+div.heading div.filter > div > div.arrow.F
+{
+   left: calc(var(--size) - 2px);
+   top: -1px;
+   opacity: 1;
+}
+div.heading div.filter > div > div.arrow.C
+{
+   left: -1px;
+   top: calc(var(--size) - 2px);
+   opacity: 1;
+   transform: rotate(90deg);
+}
+#divHeadingSpacer
+{
+   height: 3rem;
+   height: 3.5rem;
+}
+#divFindSpacer
+{
+   height: 3rem;
+}
+
+span.text
+{
+   filter: var(--drop-shadow);
+   text-overflow: ellipsis;
+}
+
+button:active, button:focus
+{
+   outline: none;
+}
+
+.special0::-webkit-scrollbar
+{
+   width: 0px !important;
+   height: 0px !important;
+}
+.special::-webkit-scrollbar
+{
+   width: var(--scrollbar);
+}
+.special::-webkit-scrollbar-track-piece
+{
+   background: var(--html-background-color);
+   background: none;
+}
+html.dark .special::-webkit-scrollbar-track-piece
+{
+   background: var(--html-background-color-dark);
+   background: none;
+}
+.special::-webkit-scrollbar-thumb
+{
+   border-radius: var(--scrollbar);
+   background-color: hsla(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow));
+}
+main:not(.scrolling):not(.touch).special::-webkit-scrollbar-thumb
+{
+   background-color: var(--color-no-scroll);
+}
+html:not(.dark) main:not(.scrolling):not(.touch).special::-webkit-scrollbar-thumb
+{
+   background-color: hsla(0, 0%, 0%, 0.25);
+}
+.special.transparent::-webkit-scrollbar-thumb
+{
+   background: none !important;
+}
+#divSearchHelp:not(.scrolling):not(.touch).special::-webkit-scrollbar-thumb
+{
+   background-color: var(--color-no-scroll);
+}
+
+html.dark #trLastUpdated
+{
+   color: white;
+}
+#trLastUpdated
+{
+   color: black;
+   cursor: pointer;
+}
+#trLastUpdated td
+{
+   padding: var(--gap) 0px;
+}
+#trLastUpdated.hidden
+{
+   display: none;
+}
+#divLastUpdated
+{
+   text-align: center;
+   font-size: 12px;
+   opacity: 0.5;
+
+   /* This is some really nice CSS to make a div fit within the width of the display, else it shows a ... */
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   padding: 0px var(--gap);
+   width: calc(100vw - (2 * var(--gap)));
+   height: var(--emoji-img-height);
+}
+#divLastUpdated img, div.timestamp img, div.datestamp img
+{
+   height: var(--emoji-img-height);
+   margin-bottom: calc(var(--emoji-img-height) * -0.25);
+}
+#spanLastUpdated
+{
+   letter-spacing: 0.2em;
+   word-spacing: 0.2em;
+   text-transform: uppercase;
+}
+
+#textareaClipboard
+{
+   width: 100px; /* Have to set an arbitrary value, else copied verses can disrupt layout of absolute positioned elements, like the div.menu */
+   height: 0px;
+   opacity: 0;
+   cursor: var(--chat-cursor);
+   /* The following settings allow for pasting in Gmail without having to select the Paste As Plain Text option */
+   background: white;
+   font-size: 13px;
+   font-family: Verdana;
+   white-space: pre;
+}
+
+div.buttons
+{
+   position: fixed;
+   bottom: 0px;
+   z-index: 1;
+   width: 100%;
+   padding-top: 4px;
+   pointer-events: none;
+}
+div.buttons li
+{
+   --size-li: calc(var(--height-button-img) + (var(--gap) * 2));
+   width: var(--size-li);
+   height: var(--size-li);
+   pointer-events: auto; 
+}
+div.buttons li img
+{
+   --size-img: var(--height-button-img);
+   width: var(--size-img);
+   height: var(--size-img);
+   margin: var(--gap) 0px;
+}
+
+.button
+{
+   border: 1px solid #404040;
+   cursor: pointer;
+   text-align: center;
+   border-radius: 50%;
+   background-color: hsla(201, 12.5%, 15%, 0.5);
+   color: white;
+}
+.button.selected
+{
+   background-color: rgba(76, 143, 252, 0.75) !important;
+}
+
+li.button
+{
+   border: 1px solid rgba(255, 255, 255, 0.5);
+   border-radius: 4px;
+   background-color: hsla(201, 12.5%, 100%, 0.25);
+   height: 27px;
+}
+li.button:not(.noChangeColor):hover
+{
+   background-color: rgba(76, 143, 252, 0.5) !important;
+}
+main div.find div.speech
+{
+   --size: calc(var(--input-height) - (var(--gap) * 2));
+
+   position: absolute;
+   height: calc(100% - (2 * var(--gap)));
+   bottom: var(--gap);
+   pointer-events: none;
+   background-color: hsl(var(--hue-green), var(--saturation-green), var(--lightness-green));
+   height: var(--input-height);
+   width: 100%;
+   bottom: 0px;
+}
+main div.find div.speech li
+{
+   height: var(--size);
+   xxxborder-radius: calc((var(--size) * 0.5) + 1px); /* Includes border */
+   pointer-events: auto; 
+   position: relative;
+
+   padding: 0px var(--gap);
+   font-size: 1rem;
+   font-size: 1.25rem;
+
+   border-radius: 0px;
+   border: none;
+   background: none;
+   width: 50%;
+
+   margin: 0px; /* #centerBorder */
+}
+main div.find div.speech li:first-child
+{
+   border-right: 0.5px solid white; /* #centerBorder */
+}
+main div.find div.speech li:last-child
+{
+   border-left: 0.5px solid white; /* #centerBorder - Make sure separator is aligned center above navigation Home button - otherwise Johnny Storm will notice */
+}
+main div.find div.speech li span
+{
+   margin-top: var(--medium-gap);
+   xxxdisplay: inline-block;
+   vertical-align: middle;
+}
+#liCatalogName span
+{
+   xxxmargin-top: 6px;
+}
+main div.find div.speech ul:last-child li
+{
+   margin-top: auto; /* This makes buttons align to bottom when I've made one of the buttons bigger than the others */
+}
+main div.find div.speech li /*>*/ img
+{
+   --img-size: calc(var(--size) * 0.5);
+   --img-size: calc(var(--size) * 0.65);
+
+   width: var(--img-size);
+   height: var(--img-size);
+   xxxmargin-top: calc((var(--size) - var(--img-size)) * 0.5);
+
+   position: unset;
+}
+main div.find div.speech li /*>*/ img.bigger
+{
+   --img-size: calc(var(--size) * 0.75);
+   --img-size: var(--size);
+}
+main div.find div.speech .button
+{
+   opacity: 1;
+}
+main div.find div.speech .button img
+{
+   opacity: 0.6;
+   padding: 0px;
+}
+main div.find div.speech .button:hover img
+{
+   opacity: 1;
+}
+main div.find div.speech ul:nth-child(2)
+{
+   top: calc(50% - (var(--size) * 0.5));
+   position: absolute;
+   width: 100%;
+}
+main div.find div.speech ul:last-child
+{
+   --left: calc((var(--margin) * 3) + (var(--input-height) * 1));
+
+   width: calc(100% - (var(--left) * 2));
+   left: var(--left);
+   padding: calc(var(--gap) - 1px) 0px;
+   position: absolute;
+}
+main div.find div.speech li td:first-child
+{
+   width: 40px;
+}
+
+main div.find div.portion
+{
+   --size: calc(var(--input-height) - (var(--gap) * 2));
+
+   position: absolute;
+   height: calc(100% - (2 * var(--gap)));
+   bottom: var(--gap);
+   xxxpointer-events: none;
+   background-color: hsl(var(--hue-orange), var(--saturation-orange), var(--lightness-orange));
+   height: var(--input-height);
+   width: 100%;
+   bottom: 0px;
+}
+div.portion > ul
+{
+   xxx--left: calc((var(--margin) * 3) + (var(--input-height) * 1));
+   --left: var(--input-height);
+
+   width: calc(100% - (var(--left) * 2));
+   left: var(--left);
+   position: absolute;
+   height: 100%;
+}
+div.portion > ul > li
+{
+   height: 100%;
+   width: -webkit-fill-available;
+
+   background: none;
+   border: none;
+   border-radius: 0px;
+}
+div.portion > ul > li:not(:last-child)
+{
+   xxxborder-right: 1px solid hsla(0, 0%, 100%, 0.5);
+}
+div.portion > ul > li td:first-child
+{
+   width: calc(var(--input-height) * 0.5);
+   xxxdisplay: none;
+   position: absolute;
+}
+div.portion > ul > li td:last-child
+{
+   font-size: 1rem;
+   padding: 0px 4px;
+   white-space: nowrap;
+}
+div.portion > ul > li img
+{
+   --height: calc(var(--input-height) * 0.9);
+
+   position: unset;
+   opacity: 0.25;
+}
+
+main div.find div.notes
+{
+   --size: calc(var(--input-height) - (var(--gap) * 2));
+
+   position: absolute;
+   height: calc(100% - (2 * var(--gap)));
+   bottom: var(--gap);
+   pointer-events: none;
+   background-color: hsl(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow));
+   height: var(--input-height);
+   width: 100%;
+   bottom: 0px;
+}
+
+#tdInputSearch
+{
+   text-align: left;
+}
+
+#tdSearch
+{
+   width: 38px;
+   background-color: hsla(var(--hue-search-blue), var(--saturation-search-blue), var(--lightness-search-blue), 1);
+   border-radius: 0px;
+   border-left: 0px solid transparent;
+   border-right: 0px solid transparent;
+}
+#tdSearch img
+{
+   vertical-align: middle;
+   pointer-events: none;
+   width: 16px;
+   height: 16px;
+}
+#tdSearchList
+{
+   background-color: rgba(76, 143, 252, 0.6);
+   border-radius: 0px 23px 23px 0px;
+   border-left: 0px solid transparent;
+   width: 38px;
+}
+#tdSearchList.disabled2
+{
+   background-color: rgba(255, 70, 70, 1);
+}
+#tdSearchList img
+{
+   vertical-align: middle;
+   pointer-events: none;
+   width: 28px;
+   height: 28px;
+}
+#selectSearchList
+{
+   position: absolute;
+   margin: -4px 0 0 -32px;
+   width: 36px;
+   height: 36px;
+   background-color: rgba(255, 0, 0, 0);
+   opacity: 0;
+   cursor: pointer;
+}
+
+img.filter
+{
+   width: 21px;
+   vertical-align: middle;
+}
+#tdFilter
+{
+   background-color: hsla(201, 12.5%, 15%, 0.5) !important;
+   border: 1px solid #404040 !important;
+   border-radius: 23px 23px 4px 4px;
+   border-radius: 23px 23px 23px 23px;
+   width: 38px;
+   width: 75px;
+}
+#tdFilter.filter
+{
+   background-color: rgba(76, 143, 252, 1) !important;
+}
+#tdFilter.wide
+{
+   border-radius: 23px 23px 4px 4px;
+}
+
+#tableSearch
+{
+   border-spacing: 0px;
+   border-radius: 4px;
+   padding: 2px;
+   border: 1px solid rgba(255, 255, 255, 0.0);
+}
+
+::-webkit-input-placeholder
+{
+   color: var(--placeholder-color);
+}
+:focus::-webkit-input-placeholder
+{
+   xxxtransform: translate(-20%, -30%);
+   transform: translate(-20%, -10%);
+   transition: all 0.5s ease-in-out;
+   xxxfont-size: calc(var(--font-size) * 0.5);
+   font-size: calc(var(--font-size) * 0.75);
+}
+.spud:focus::-webkit-input-placeholder
+{
+   transform: translate(3%, -10%);
+}
+
+::-webkit-search-cancel-button
+{
+   -webkit-appearance: none; /* Hide the default X icon */
+   height: 20px;
+   width: 20px;
+   background-image: url(../images/backspace.png);
+   background-size: 20px 20px;
+   opacity: 0.35;
+}
+
+.spacer
+{
+   width: 4px;
+}
+
+.baseline *
+{
+   vertical-align: baseline;
+}
+.baseline span
+{
+   font-family: var(--default-font);
+}
+
+span.number, span.subheading
+{
+   opacity: 0.65;
+   font-size: 0.85em;
+}
+span.number
+{
+   display: inline-block;
+   vertical-align: top;
+
+   width: 2rem;
+   font-size: 0.85rem;
+   text-align: center;
+   height: 50%;
+
+   width: 2em;
+}
+xspan.number.before::before
+{
+   content: "\00a0";
+}
+xspan.number.after::after
+{
+   content: "\00a0";
+}
+
+span.number span
+{
+   position: absolute;
+}
+
+span.number.paragraph::after
+{
+   content: "\00b6";  /* pilcrow */
+   position: absolute;
+   font-size: 0.75em;
+   left: 2px;
+   top: -1px;
+}
+span.number.citation::before
+{
+   content: "\2022";  /* bullet */
+   position: absolute;
+   left: -6px;
+}
+
+main > div.gap
+{
+   height: calc(var(--header-height) + var(--header-margin));
+}
+main > div.gap.hidden
+{
+   display: none;
+}
+
+#tdChapter
+{
+   vertical-align: top;
+}
+
+select.quote
+{
+   font-size: var(--select-font-size); /* This is necessary because the select element does not inherit font-size from div.heading - it would otherwise be 13.33px */
+   font-size: 1rem;
+
+   position: absolute;
+   top: 0px;
+   height: 100%;
+   z-index: 1;
+
+   background-color: rgba(255, 0, 0, 0.0);
+   opacity: 0.0;
+   cursor: pointer;
+
+   /* With assistance of JavaScript we dynamically shift the widths of the side-by-side book and chapter select elements */
+   --size: var(--select-font-size);
+   --margin: calc(var(--select-font-size) * 0.25);
+   --mult: 1;
+   --width-icon: calc((var(--size) + (var(--margin) * 2)) * var(--mult));
+   --width: calc(var(--select-quote-division) - var(--width-icon) - (var(--select-font-size) * 0.1));
+}
+
+#selectGroup
+{
+   top: 0px;
+   left: 0px;
+   width: var(--width-icon);
+   z-index: 2;
+}
+
+#selectBook
+{
+   left: var(--width-icon);
+   width: var(--width);
+}
+
+#selectChapter
+{
+   right: var(--width-icon);
+   width: calc(100% - (2 * var(--width-icon)) - var(--width));
+}
+
+#spanTest
+{
+   position: absolute;
+   text-align: center;
+   xxxleft: 50%;
+   bottom: var(--gap);
+   color: white;
+   background: hsla(0, 0%, 0%, 0.5);
+
+   width: 100%;
+   pointer-events: none;
+   left: 0px;
+   overflow-wrap: break-word;
+}
+
+#divVersesContainer > div p::before
+{
+   --offset-horizontal: -2px;
+   --offset-vertical: 0px;
+   --size: 30px;
+   --radius-1: calc(var(--size) * 0.5);
+   --radius-2: calc(var(--radius-1) * 0.5);
+   --border-width: 1px;
+   --border-style: solid;
+
+   content: "";
+   display: block;
+   position: absolute;
+   z-index: -1;
+   top: var(--offset-vertical);
+   bottom: var(--offset-vertical);
+   left: var(--offset-horizontal);
+   right: var(--offset-horizontal);
+   border-radius: var(--radius-2);
+}
+p.selected::before, html:not(.inline) p.note::before
+{
+   border-style: var(--border-style);
+}
+p.selected::before
+{
+   border-width: var(--border-width) !important;
+   border-color: hsla(0, 0%, 100%, 0.5);
+}
+html:not(.inline) p.note::before
+{
+   border-width: 0px;
+   border-right-width: var(--border-width);
+   border-right-color: hsl(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow));
+}
+
+html.dark p.selected:before
+{
+   background-color: hsla(0, 0%, 100%, var(--selection-opacity));
+}
+html:not(.dark) p.selected:before
+{
+   background-color: hsl(0, 0%, 20%);
+   border-color: hsla(0, 0%, 0%, 0.5);
+}
+p.selected:not(.range):before
+{
+   border-top-left-radius: var(--radius-1) !important;
+}
+p.selected.range ~ p.selected.range:not(.last):before
+{
+   border-top: none !important;
+   border-bottom: none !important;
+   border-radius: 0px !important;
+}
+p.selected.range.first:before
+{
+   border-bottom: none !important;
+   border-bottom-left-radius: 0px !important;
+   border-bottom-right-radius: 0px !important;
+   border-top-left-radius: var(--radius-1) !important;
+}
+p.selected.range.last:before
+{
+   border-top: none !important;
+   border-top-left-radius: 0px !important;
+   border-top-right-radius: 0px !important;
+}
+
+p.selected.double:not(.range)::before
+{
+   animation-name: animate-border;
+   animation-duration: 0.5s;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+   animation-timing-function: ease-in-out;
+}
+
+#inputDatePortion::-webkit-clear-button
+{
+   -webkit-appearance: none;
+   margin: 0;
+}
+#inputDatePortion
+{
+   --hotspot-size: calc(var(--size) + var(--border));
+   --clip-size: 20px;
+
+   position: absolute;
+   width: calc(var(--hotspot-size) + var(--clip-size));
+   height: var(--hotspot-size);
+
+   background-color: rgba(255, 0, 0, 0.0);
+   opacity: 0.0;
+   cursor: pointer;
+
+   clip-path: inset(0px 0px 0px var(--clip-size));
+   margin-left: calc(var(--clip-size) * -2);
+
+   border: none;
+   right: 0px;
+}
+#inputDatePortion::-webkit-calendar-picker-indicator
+{
+   width: var(--hotspot-size);
+   height: var(--hotspot-size);
+   cursor: pointer;
+}
+
+#divVersesContainer
+{
+   -webkit-column-break-inside: avoid;
+}
+#divVersesContainer > div
+{
+   margin-bottom: var(--gap);
+}
+div.verses
+{
+   cursor: pointer; /* For selecting verses or sections in the browser */
+}
+
+main div.find
+{
+   --font-size: 1.5rem;
+   --input-height: calc(var(--font-size) * 2);
+
+   position: fixed;
+   left: 0px;
+   bottom: 0px;
+   width: 100%;
+   height: var(--input-height);
+}
+
+.stripe > *:nth-child(even)
+{
+   background-color: var(--html-background-color-darker);
+   color: hsl(0, 0%, 75%);
+}
+main div.find input
+{
+   font-size: var(--font-size);
+   width: 100%;
+   height: var(--input-height);
+   border: 0px;
+   text-align: center;
+   caret-color: hsla(0, 0%, 100%, 0.5);
+}
+main div.find[data-group=notes] input
+{
+   --placeholder-color: hsla(0, 0%, 0%, 0.5);
+
+   caret-color: hsla(0, 0%, 0%, 0.5);
+}
+main div.find input::-webkit-search-cancel-button, main div.find input::-webkit-calendar-picker-indicator
+{
+   display: none;
+}
+input.search, input.number
+{
+   color: white;
+}
+input.search,
+div.find img.search,
+div.find img[data-group=search]
+{
+   xxxtransition: all 0.5s ease-in-out;
+}
+body.noMatch input.search
+{
+   color: hsla(0, 0%, 100%, 0.25);
+}
+body.noMatch div.find img.search,
+body.noMatch div.find img[data-group=search]
+{
+   opacity: 0.25;
+}
+div.find[data-group=portion] input, div.find[data-group=speech] input
+{
+   display: none;
+}
+div.find[data-group=verse] input
+{
+   background-color: hsl(var(--hue-red), var(--saturation-red), var(--lightness-red));
+}
+div.find[data-group=notes]
+{
+   background-color: hsl(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow));
+}
+div.find[data-group=notes] input
+{
+   background-color: hsl(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow));
+   color: hsl(var(--hue-black), var(--saturation-black), var(--lightness-black));
+   text-align: right;
+   width: calc(100% - (var(--icon-width) * 2));
+   margin-left: var(--icon-width);
+}
+div.find[data-group=search] input
+{
+   background-color: hsl(var(--hue-blue), var(--saturation-blue), var(--lightness-blue));
+
+   padding: 0 var(--icon-width) 0 calc(2 * var(--icon-width));
+}
+div.autocomplete
+{
+   color: white;
+   opacity: 0.5;
+   font-size: var(--font-size);
+   white-space: nowrap;
+}
+div.filter-info
+{
+   color: white;
+   opacity: 0.5;
+   font-size: calc(var(--font-size) * 0.75);
+   white-space: nowrap;
+   text-align: right;
+   margin-right: var(--icon-width);
+   position: absolute;
+   top: 50%;
+   transform: translate(0, -50%);
+   right: 0;
+}
+
+div.find img
+{
+   --height: calc(var(--input-height) * 0.5);
+   xxx--margin: calc((var(--input-height) - var(--height)) * 0.5);
+   --padding: calc((var(--input-height) - var(--height)) * 0.5); /* Need to increase clickable area - use padding around image */
+
+   position: absolute;
+   xxxtop: var(--margin);
+   top: 0px;
+   padding: var(--padding);
+   height: var(--height);
+
+   pointer-events: auto;
+}
+div.find:not([data-group=verse]) img.reverse
+{
+   display: none;
+}
+div.find img.reverse
+{
+   right: calc(var(--height) + (2 * var(--padding))) !important;
+   transform: scale(-1, 1);
+}
+div.find img.group
+{
+   xxxleft: var(--margin);
+   left: 0px;
+   z-index: 103;
+}
+div.find img.group.second
+{
+   left: calc(var(--height) + (var(--padding) * 2));
+}
+div.find img:not(.group)
+{
+   right: 0px;
+}
+div.find[data-group=search] img.search:not(.group)
+{
+   content: var(--filter-image);
+}
+div.find[data-group=search] select.filter
+{
+   --size: var(--icon-width);
+   --border: 0px;
+
+   right: 0px;
+}
+div.find[data-group=verse] img.search:not(.group),
+div.find[data-group=search] img.search.hide-filter-info:not(.group)
+{
+   content: var(--arrow-image);
+}
+div.find[data-group=portion] img.search:not(.group),
+div.find[data-group=speech] img.search:not(.group)
+{
+   content: var(--find-image);
+}
+div.find[data-group=notes] img.search:not(.group)
+{
+   content: var(--write-image);
+}
+div.find[data-group=verse] img.group:not([data-group=verse]),
+div.find[data-group=portion] img.group:not([data-group=portion]),
+div.find[data-group=notes] img.group:not([data-group=notes]),
+div.find[data-group=speech] img.group:not([data-group=speech]),
+div.find[data-group=search] img.group:not([data-group=search])
+{
+   display: none;
+}
+
+img.icon
+{
+   width: 16px;
+}
+
+span.spanSearch
+{
+   background: rgba(255, 255, 255, 0.25);
+   border-radius: 4px;
+   margin: -2px;
+   padding: 1px;
+   border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+hr:not(.bridge):not(.white)
+{
+   background: 
+      -webkit-linear-gradient(
+         left, 
+         rgba(0, 0, 0, 0.0) 0%, 
+         rgba(0, 0, 0, 0.2) 10%, 
+         rgba(0, 0, 0, 0.8) 50%, 
+         rgba(0, 0, 0, 0.2) 90%, 
+         rgba(0, 0, 0, 0.0) 100%);
+}
+hr.bridge
+{
+   --hue: 0;
+   --saturation: 0%;
+   --lightness: 80%;
+
+   background: 
+      -webkit-linear-gradient(
+         left, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 0.0) 0%, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 0.2) 10%, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 0.8) 50%, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 0.2) 90%, 
+         hsla(var(--hue), var(--saturation), var(--lightness), 0.0) 100%);
+   filter: drop-shadow(0px 0px 1px #000000) drop-shadow(0px 1px 1px #000000) drop-shadow(0px 2px 1px #000000);
+}
+hr.bridge.clip
+{
+   position: absolute;
+   display: inline-block;
+   width: 100%;
+   left: 0px;
+}
+hr.bridge.clip.top
+{
+   clip: rect(0px, 2000px, 100px, 0px); /* top, right, bottom, left */
+   top: calc(100% - 2px);
+}
+hr.bridge.clip.bottom
+{
+   filter: drop-shadow(0px 0px 1px #000000) drop-shadow(0px -1px 1px #000000) drop-shadow(0px -2px 1px #000000);
+   position: fixed;
+   bottom: -2px;
+
+   /* This clip removes the small drop-shadow below the horizontal line. The rect's bottom value MUST include the actual horizontal line for the drop-shadow to appear. */
+   clip: rect(-100px, 2000px, 1px, 0px); /* top, right, bottom, left */
+}
+body.find-active hr.bridge.clip.bottom
+{
+   bottom: calc(3rem - 1px);
+}
+body.find-active[data-group=verse] hr.bridge.clip.bottom
+{
+   --hue: var(--hue-red);
+   --saturation: var(--saturation-red);
+   --lightness: var(--lightness-red);
+}
+body.find-active[data-group=speech] hr.bridge.clip.bottom
+{
+   --hue: var(--hue-green);
+   --saturation: var(--saturation-green);
+   --lightness: var(--lightness-green);
+}
+body.find-active[data-group=notes] hr.bridge.clip.bottom
+{
+   --hue: var(--hue-yellow);
+   --saturation: var(--saturation-yellow);
+   --lightness: var(--lightness-yellow);
+}
+body.find-active[data-group=search] hr.bridge.clip.bottom
+{
+   --hue: var(--hue-blue);
+   --saturation: var(--saturation-blue);
+   --lightness: var(--lightness-blue);
+}
+body.find-active[data-group=portion] hr.bridge.clip.bottom
+{
+   --hue: var(--hue-orange);
+   --saturation: var(--saturation-orange);
+   --lightness: var(--lightness-orange);
+}
+hr.white
+{
+   background: 
+      -webkit-linear-gradient(
+         left, 
+         rgba(255, 255, 255, 0.0) 0%, 
+         rgba(255, 255, 255, 0.2) 10%, 
+         rgba(255, 255, 255, 0.8) 50%, 
+         rgba(255, 255, 255, 0.2) 90%, 
+         rgba(255, 255, 255, 0.0) 100%);
+}
+
+#tdChapter
+{
+   position: relative;
+   padding: 0px;
+}
+div.indicator
+{
+   position: absolute;
+   width: var(--scrollbar);
+   height: 3rem;
+   border-radius: var(--scrollbar);
+   left: calc(var(--gap) * -1);
+   top: 0px;
+   background-color: hsl(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow));
+   opacity: 1;
+   z-index: 1;
+}
+div.indicator.none
+{
+   display: block !important;
+   background-color: var(--color-no-scroll);
+
+   z-index: 0;
+}
+
+.anti-clockwise img
+{
+   transform: rotate(-90deg);
+}
+.clockwise img
+{
+   transform: rotate(90deg);
+}
+
+html:not(.footer) div.footer:not(.menuitem)
+{
+   display: none !important;
+}
+#divNotesContainer, #divParagraphsContainer, #divCitationsContainer
+{
+   text-align: center;
+   color: white;
+}
+#divNotesContainer > div:first-of-type, #divParagraphsContainer > div:first-of-type, #divCitationsContainer > div:first-of-type
+{
+   letter-spacing: 0.2em;
+   margin-top: var(--gap);
+}
+#divNotesContainer > div.notes, div.paragraphs, div.citations
+{
+   --opacity: var(--default-opacity);
+
+   display: inline-block;
+   text-align: left;
+   margin: var(--gap) 0px;
+}
+#divNotesContainer > div.notes > div, div.paragraphs > div, div.citations > div
+{
+   padding: var(--gap);
+}
+span.link
+{
+   text-decoration: underline;
+   text-decoration-color: hsla(0, 0%, 100%, var(--opacity));
+   cursor: pointer;
+}
+span.grammar
+{
+   word-spacing: normal;
+   opacity: var(--opacity);
+}
+div.paragraphs span.grammar
+{
+   display: none;
+}
+
+div.heading.small span.testament, div.heading.small span.group
+{
+   display: none;
+}
+#divSubheading
+{
+   --padding-left: 6em;
+   --padding-right: 5em;
+
+   text-align: center;
+   width: calc(100% - (var(--scrollbar) * 2) - var(--padding-left) - var(--padding-right));
+   padding: 0px var(--padding-right) 0px var(--padding-left);
+
+   font-size: 0.25em;
+   font-weight: 800;
+   position: fixed;
+   top: 0.25em;
+   line-height: 1em;
+
+   /* It's necessary to simulate opacity since we want the drop shadow to be fully opaque */
+   color: rgba(60, 60, 60, 1.0);
+
+   letter-spacing: 0.2em;
+   text-transform: uppercase;
+
+   filter: var(--invert) var(--heading-filter) !important;
+
+   filter: var(--invert) !important;
+   mix-blend-mode: luminosity;
+}
+
+#divVersesContainer div.parallel
+{
+   xxxbackground: hsl(var(--hue-red), var(--saturation-red), var(--lightness-red));
+   xxxoutline: var(--gap) solid hsl(var(--hue-red), var(--saturation-red), var(--lightness-red));
+}
+
+#divSubheadingParallel
+{
+   text-transform: none;
+   height: 2em;
+   font-size: 0.67rem;
+}
+#divSubheadingParallel td
+{
+   width: 50%;
+}
+#divSubheadingParallel td:first-child
+{
+   text-align: left;
+}
+#divSubheadingParallel td:last-child
+{
+   text-align: right;
+}
+div.heading:not(.small) #divSubheadingParallel
+{
+   line-height: 2em;
+}
+
+#divHelp
+{
+   --border-width: 3px;
+   --size: 100px;
+   --radius-1: calc(var(--size) * 0.5);
+   --radius-2: calc(var(--radius-1) * 0.5);
+
+   position: absolute;
+   width: calc(100% - var(--size));
+   height: var(--size);
+   left: calc(var(--size) * 0.5);
+   top: calc(50% - (var(--size) * 0.5));
+   background-image: url("../images/signpost2.svg?version=1");
+   background-size: calc(var(--size) * 0.75);
+   background-repeat: no-repeat;
+   background-position: 10px center;
+   border-radius: var(--radius-2) var(--radius-1) var(--radius-2) var(--radius-2);
+   background-color: hsla(var(--hue-black), var(--saturation-black), var(--lightness-black), var(--button-opacity));
+   border: var(--border-width) solid hsla(0, 0%, 100%, 0.5);
+   cursor: pointer;
+   text-align: center;
+   color: white;
+   filter: var(--drop-shadow);
+   font-size: 30px;
+   vertical-align: middle;
+}
+#divHelp.hidden
+{
+   opacity: 0.25;
+   visibility: inherit;
+}
+
+div.verses > div.strongs > div.entry
+{
+   line-height: 150% !important;
+   text-align: justify;
+   padding: var(--gap);
+
+   overflow-y: scroll;
+   max-height: calc(var(--height) - 65px);
+
+   max-height: calc(var(--height) - 200px); /* To allow room for Lexicon */
+}
+
+a
+{
+   color: inherit;
+   text-decoration-color: hsla(0, 0%, 0%, 0.5);
+}
+
+div.verses > div.strongs > div.entry a
+{
+   text-decoration: underline;
+   text-decoration-color: hsla(0, 0%, 0%, 0.5);
+}
+
+div.strongs div.inlineHeading
+{
+   text-align: center;
+}
+
+div.splash
+{
+   width: 100%;
+   height: 100%;
+   background: var(--html-background-color-dark);
+   font-family: serif;
+}
+div.splash img
+{
+   /*
+   min-width: 100%;
+   min-height: 100.1%;
+   max-height: 100.1%;
+
+   max-width: 180%;
+   max-height: 130%;
+   */
+   max-width: calc(100% - (2 * var(--gap)));
+   max-height: calc(100% - (2 * var(--gap)));
+}
+div.splash img.flare.overlay
+{
+   mix-blend-mode: hard-light;
+}
+div.splash img.flare
+{
+   --size: 300%;
+
+   max-width: var(--size);
+   max-height: var(--size);
+   width: var(--size);
+}
+div.splash > span.the-bible
+{
+   color: #F8EE99;
+   color: hsla(0, 0%, 0%, 0.65);
+   font-size: 5em;
+   font-weight: bold;
+   padding-bottom: 0.5em;
+   filter: drop-shadow(2px 4px 6px black);
+
+   animation: animate-fadeIn 3s;
+}
+@keyframes animate-fadeIn
+{
+   0%
+   {
+      opacity: 0;
+   }
+   100%
+   {
+      opacity: 1;
+   }
+}
+div.splash > span.the-bible > span
+{
+   font-size: 0.5em;
+   margin-top: -0.5em;
+}
+body:not(.refresh-button) div.splash > span.refresh-button
+{
+   display: none;
+}
+div.splash > span.refresh-button
+{
+   --size: 70px;
+   --radius-1: calc(var(--size) * 0.5);
+   --radius-2: calc(var(--radius-1) * 0.5);
+
+   color: white;
+   font-size: 2em;
+   /*
+   padding: 0.5em;
+   border: 1px solid white;
+   border-radius: var(--radius-2) var(--radius-1) var(--radius-2) var(--radius-2);
+   background: hsla(0, 0%, 0%, 0.5);
+   */
+   opacity: 0.5;
+}
+div.splash > span.refresh-button > img
+{
+   width: 2.5em;
+}
+@media (orientation: portrait)
+{
+   div.splash:not(.quote-disabled) img,
+   div.splash:not(.quote-disabled) > span.the-bible
+   {
+      top: 60%;
+   }
+   div.splash.quote-disabled > quote
+   {
+      display: none;
+   }
+   div.splash > span.refresh-button
+   {
+      top: 85% !important;
+   }
+}
+@media (orientation: landscape)
+{
+   div.splash > quote
+   {
+      display: none;
+   }
+   div.splash > span.refresh-button
+   {
+      top: 50% !important;
+      left: 85% !important;
+   }
+}
+div.splash > quote > p
+{
+   opacity: 0.5;
+   color: white;
+   font-size: 2em;
+   padding: 1em;
+   text-align: center;
+   line-height: 1.7em;
+   margin-block-start: 0;
+   margin-block-end: 0;
+   xfilter: drop-shadow(2px 4px 6px white);
+}
+div.splash > quote > p:last-child
+{
+   position: absolute;
+   bottom: 0;
+   width: calc(100% - 2em);
+   font-size: 3em;
+}
+div.splash > quote > p > span.u
+{
+   border-bottom: var(--underline);
+}
+div.splash > quote > p > span.n
+{
+   opacity: 0.5;
+}
+
+input.number:invalid
+{
+   color: hsla(0, 0%, 100%, 0.5);
+}
+
+#divSearchHelp
+{
+   color: white;
+   background: var(--html-background-color-dark);
+   width: calc(100% - (2 * var(--gap)));
+   height: calc(100% - (2 * var(--gap)));
+   position: absolute;
+   left: 0;
+   top: 0;
+   overflow-y: scroll;
+   padding: var(--gap);
+
+   font-size: var(--user-font-size) !important;
+   line-height: 150% !important;
+   text-align: justify;
+   margin-block-start: 0px;
+   margin-block-end: 0px;
+}
+
+#selectList,
+#selectNavigation
+{
+   --size: var(--icon-width);
+   --border: 0px;
+   --hotspot-size: calc(var(--size) + var(--border));
+   --padding: calc(var(--hotspot-size) * 0.25);
+
+   position: var(--menu-positioning-method);
+   left: calc(var(--hotspot-size));
+   top: 0px;
+   width: var(--hotspot-size);
+   height: var(--hotspot-size);
+   cursor: pointer;
+   opacity: 0.0;
+   background-color: rgba(255, 0, 0, 0.0);
+
+   z-index: 111;
+}
+body[data-group=search] #selectList,
+body[data-group=verse] #selectNavigation
+{
+   z-index: 112;
+}
+
+body.hide-scroll-to-selection div.scroll-to-selection
+{
+   display: none !important;
+}
+div.scroll-to-selection
+{
+   /*
+   --size: 2rem;
+
+   width: var(--size);
+   height: var(--size);
+
+   content: var(--arrowTop-image);
+ 
+   top: calc(100% - (3 * var(--size)));
+
+   background: hsla(0, 0%, 100%, 0.5);
+   border: 1.5px solid black;
+   border-radius: 25%;
+   padding: 0.5em;
+
+   cursor: pointer;
+
+   opacity: 0.5;
+   */
+   --size: var(--menu-item-size);
+   --image-size: calc(var(--size) * 0.5);
+   --radius-1: calc(var(--size) * 0.5);
+   --radius-2: calc(var(--radius-1) * 0.5);
+   --border: 1px;
+   --bottom: calc(var(--size) + (2 * (var(--border) + var(--gap))));
+
+   background-image: url("../images/arrowTop.svg?version=4");
+   background-size: var(--image-size);
+   background-position: center;
+   background-repeat: no-repeat;
+   background-color: hsla(var(--hue-black), var(--saturation-black), var(--lightness-black), var(--button-opacity));
+
+   position: var(--menu-positioning-method);
+   display: inline-block;
+   z-index: calc(var(--body-z-index) + 3);
+   width: var(--size);
+   height: var(--size);
+   cursor: pointer;
+
+   border: var(--border) solid white;
+}
+@media (orientation: portrait)
+{
+   div.scroll-to-selection
+   {
+      border-radius: var(--radius-2) var(--radius-1) var(--radius-2) var(--radius-2);
+      bottom: var(--bottom);
+      right: var(--gap);
+   }
+}
+@media (orientation: landscape)
+{
+   div.scroll-to-selection
+   {
+      border-radius: var(--radius-2) var(--radius-2) var(--radius-2) var(--radius-1);
+      left: var(--gap);
+      bottom: var(--gap);
+   }
+}
+body.find-active div.scroll-to-selection
+{
+   bottom: calc(3rem + var(--bottom));
+}
+div.scroll-to-selection.hidden
+{
+   opacity: 0.25;
+   visibility: inherit;
+}
+body.menu-active div.scroll-to-selection,
+body.note-active div.scroll-to-selection
+{
+   display: none;
+}
+
+a.strongs.selected
+{
+   border-radius: 4px;
+   background: hsla(0, 0%, 100%, 0.25);
+   border: 1px solid hsla(0, 0%, 100%, 0.5);
+   padding: 1px;
+   margin: -2px;
+}
+
+div.thayers
+{
+   overflow-y: scroll;
+   xxxmax-height: 121px;
+   text-align: justify;
+   line-height: 150% !important;
+   padding: var(--gap);
+   background: hsl(43 100% 65% / 1);
+}
+div.thayers span.temp
+{
+   text-align: center;
+   display: block;
+}
+
+@media (orientation: landscape)
+{
+   #divCommentaryContainer
+   {
+      display: none;
+   }
+}
+@media (orientation: portrait)
+{
+   body:not(.commentary) #divCommentaryContainer
+   {
+      display: none;
+   }
+   body.commentary main.special
+   {
+      height: 50%;
+   }
+}
+#divCommentaryContainer
+{
+   --color-commentary: hsl(43, 100%, 75%);
+   --margin: var(--gap);
+
+   width: 100%;
+   height: 50%;
+   position: absolute;
+   top: 50%;
+   background: var(--color-commentary);
+   overflow-y: scroll;
+}
+body.find-active #divCommentaryContainer
+{
+   height: calc(50% - 3rem);
+}
+div.commentary
+{
+   margin: var(--margin);
+   color: black;
+   font-size: var(--user-font-size) !important;
+}
+#divCommentaryContainer hr.bridge
+{
+   position: fixed;
+   opacity: 0.5;
+}
+#divCommentaryContainer hr.bridge.top
+{
+   top: calc(50% - 1px);
+}
+#divCommentaryContainer hr.bridge.bottom
+{
+   bottom: -1px;
+}
+body.find-active #divCommentaryContainer hr.bridge.bottom
+{
+   bottom: calc(3rem - 1px);
+}
+div.commentary div.comm
+{
+   xxxmargin: var(--margin) 0;
+}
+div.commentary div.vheading
+{
+   margin-bottom: var(--margin);
+}
+div.commentary div.chap
+{
+   margin-top: var(--margin);
+}
+div.commentary div.verse,
+div.commentary div.versenum
+{
+   opacity: 0.5;
+   margin: var(--margin) 0;
+}
+div.menuitem.commentary-lock
+{
+}

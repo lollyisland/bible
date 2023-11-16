@@ -1,0 +1,114 @@
+@media (orientation: landscape)
+{
+   :root
+   {
+      --menu-item-size: 54px;
+   }
+   html.dark
+   {
+      background: var(--html-background-color-dark);
+   }
+   html.dark.no-splash
+   {
+      --color-divider: hsla(0, 0%, 100%, 0.8);
+      --color-parallel: hsl(var(--hue-red), var(--saturation-red), var(--lightness-red));
+      --color-parallel: var(--note-background-color);
+      --color-parallel: var(--html-background-color);/*hsl(204, 13%, 80%);*/
+      --color-parallel: hsl(200, 12.5%, 75%);
+      --color-parallel: hsl(43, 100%, 75%);
+      --offset: 2px;
+      --width: 1px;
+
+      background:
+         -webkit-linear-gradient(
+            left, 
+            var(--html-background-color-dark) 0%, 
+            var(--html-background-color-dark) calc(50% - var(--offset)), 
+            var(--color-divider) calc(50% - var(--offset)),
+            var(--color-divider) calc(50% - var(--offset) + var(--width)),
+            var(--color-parallel) calc(50% - var(--offset) + var(--width)), 
+            var(--color-parallel) 100%) !important;
+   }
+   #divVersesContainer
+   {
+      column-count: 2;
+   }
+   #divNotesContainer, #divParagraphsContainer, #divCitationsContainer
+   {
+      display: none;
+   }
+   #divVersesContainer div.parallel
+   {
+   }
+   #sectionMenu
+   {
+      width: 50%;
+      height: 100%;
+      position: fixed;
+      z-index: calc(var(--body-z-index) + 2);
+   }
+   div.menuitems.parallel
+   {
+      visibility: inherit;
+   }
+   div.menuitems.parallel.hidden
+   {
+      opacity: 0.25;
+   }
+   body:not(.find-active) hr.bridge.clip.bottom
+   {
+      display: none;
+   }
+}
+@media (orientation: portrait)
+{
+   #divVersesContainer
+   {
+   }
+   #divVersesContainer div.parallel
+   {
+      display: none;
+   }
+   #tdChapter div.verses > p
+   {
+      min-height: 0px !important;
+   }
+   #divSubheadingParallel
+   {
+      display: none;
+   }
+}
+
+@keyframes animate-border
+{
+   from
+   {
+      border-color: hsla(0, 0%, 100%, 0.5);
+   }
+   to
+   {
+      border-color: hsla(0, 0%, 100%, 1);
+   }
+}
+@keyframes animate-placeholder-color
+{
+   from
+   {
+      color: rgba(0, 0, 0, 0.3);
+   }
+   to
+   {
+      color: rgba(0, 0, 0, 0.05);
+   }
+}
+@keyframes animate-placeholder-margin
+{
+   from
+   {
+      margin-left: 0px;
+   }
+   to
+   {
+      margin-left: var(--gap);
+   }
+}

@@ -1,0 +1,3 @@
+commentary
+        - select verse, then scroll to that verse in commentary
+        - lock current commentary (so that you can go elsewhere in Bible)

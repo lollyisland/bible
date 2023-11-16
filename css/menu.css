@@ -1,0 +1,767 @@
+div.menu
+{
+   --size: var(--menu-item-size);
+   --image-size: calc(var(--size) * 0.5);
+   --radius-1: calc(var(--size) * 0.5);
+   --radius-2: calc(var(--radius-1) * 0.5);
+
+   background-image: url("../images/doublearrow.svg?version=2");
+   background-size: var(--image-size);
+   background-position: center;
+   background-repeat: no-repeat;
+   background-color: hsla(var(--hue-black), var(--saturation-black), var(--lightness-black), var(--button-opacity));
+
+   position: var(--menu-positioning-method);
+   display: inline-block;
+   z-index: calc(var(--body-z-index) + 4);
+   width: var(--size);
+   height: var(--size);
+   right: var(--gap);
+   bottom: var(--gap);
+   border-radius: var(--radius-2) var(--radius-2) var(--radius-1) var(--radius-2);
+   cursor: pointer;
+}
+
+html.experiment div.menu
+{
+   border-radius: 30px;
+   border-top-left-radius: 100px;
+   --size: 30px;
+   transform: scaleX(-1) rotate(-45deg);
+   transform-origin: left top;
+   background-image: none;
+}
+html.experiment div.menu::before
+{
+   background-image: url("../images/menu2.svg");
+   background-size: var(--image-size);
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+body.find-active div.menu
+{
+   bottom: calc(3rem + var(--gap));
+}
+
+/* This works but I prefer no rotation
+body.link-menu-active div.menu
+{
+   transform: rotate(90deg);
+   border-radius: var(--radius-2) var(--radius-1) var(--radius-2) var(--radius-2);
+}
+*/
+
+div.menu.mirror
+{
+   border-radius: var(--radius-2) var(--radius-2) var(--radius-2) var(--radius-1);
+}
+div.menu.hidden/*, div.heading.hidden*/
+{
+   opacity: 0.25;
+   visibility: inherit;
+
+   --button-opacity: 0.5;
+   opacity: 0.5;
+
+   blueredtheme--button-opacity: 0.5;
+   blueredthemeopacity: 0.5;
+}
+div.menuitems
+{
+   --size: var(--menu-item-size);
+   --image-size: calc(var(--size) * 0.5);
+   --border: 2px;
+   --adjacent: calc(var(--size) + var(--gap) + var(--border));
+   --radius-1: calc(var(--size) * 0.5);
+   --radius-2: calc(var(--radius-1) * 0.5);
+   --offset: 0px;
+
+   position: var(--menu-positioning-method);
+   z-index: calc(var(--body-z-index) + 4);
+   xxxright: calc((var(--adjacent) * var(--position)) + var(--gap) + var(--border));
+   right: calc((var(--adjacent) * var(--position)) + var(--gap));
+}
+div.menuitems.parallel
+{
+   right: calc(var(--gap) - 100%);
+}
+body.find-active div.menuitems
+{
+   --offset: 3rem;
+}
+div.menuitems.bars
+{
+   display: inline-block;
+   width: calc(100% - var(--adjacent) - var(--gap));
+   height: var(--size);
+   right: var(--adjacent);
+   bottom: calc(var(--offset) + var(--gap) + var(--border));
+}
+div.menuitems.link, 
+div.menuitems.speech, 
+div.menuitems.search, 
+div.menuitems.portion, 
+div.menuitems.notes, 
+div.menuitems.verse, 
+div.menuitems.options, 
+div.menuitems.parallel
+{
+   xxxwidth: var(--size);
+   width: calc(var(--size) + var(--border));
+   bottom: calc(var(--offset) + var(--adjacent));
+}
+div.menuitems.parallel
+{
+   bottom: var(--gap);
+}
+body.find-active div.menuitems.parallel
+{
+   bottom: calc(3rem + var(--gap));
+}
+div.menuitems.link
+{
+   --link-scale: 1.25;
+   --position: 0;
+
+   width: calc((var(--menu-item-size) * var(--link-scale)) + var(--border));
+}
+div.menuitems.search
+{
+   --position: 1;
+}
+div.menuitems.speech
+{
+   --position: 2;
+}
+div.menuitems.notes
+{
+   --position: 3;
+}
+div.menuitems.portion
+{
+   --position: 4;
+}
+div.menuitems.verse
+{
+   --position: 5;
+}
+div.menuitems.options
+{
+   xxxright: calc(var(--gap) + var(--border));
+   right: var(--gap);
+}
+div.menuitems div.menuitem
+{
+   background-size: var(--image-size);
+   background-position: center;
+   background-repeat: no-repeat;
+
+   position: relative;
+   cursor: pointer;
+   width: var(--size);
+   height: var(--size);
+
+}
+div.menuitem.bar
+{
+   margin-right: var(--gap);
+   float: right;
+   border-radius: var(--radius-2) var(--radius-2) var(--radius-2) var(--radius-1) !important;
+}
+div.menuitem.link, div.menuitem.speech, div.menuitem.search, div.menuitem.portion, div.menuitem.notes, div.menuitem.verse, div.menuitem.option
+{
+   margin-bottom: var(--gap);
+   border-radius: var(--radius-2) var(--radius-1) var(--radius-2) var(--radius-2);
+}
+html.dark div.menuitems div.menuitem, html.dark div.menu
+{
+   border: 1px solid white;
+}
+html:not(.dark) div.menuitems div.menuitem, html:not(.dark) div.menu
+{
+   border: 1px solid black;
+}
+div.menuitem.portion
+{
+   background-image: url("../images/portion.svg?version=2");
+   background-color: hsla(var(--hue-green), var(--saturation-green), var(--lightness-green), var(--button-opacity));
+   background-color: hsla(var(--hue-orange), var(--saturation-orange), var(--lightness-orange), var(--button-opacity));
+}
+div.menuitem.notes
+{
+   background-image: var(--notes-image);
+   background-color: hsla(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow), var(--button-opacity));
+}
+div.menuitem.verse
+{
+   background-image: var(--book-image);
+   background-color: hsla(var(--hue-red), var(--saturation-red), var(--lightness-red), var(--button-opacity));
+}
+div.menuitem.notes.strongs
+{
+   background-image: var(--strongs-image);
+}
+div.menuitem.notes.commentary
+{
+   background-image: var(--commentary-image);
+}
+div.menuitem.notes.commentary-select
+{
+   background-image: var(--commentary-select-image);
+}
+div.menuitem.notes.commentary-lock
+{
+   background-image: var(--lock-image);
+}
+div.menuitem.notes.write
+{
+   background-image: var(--write-image);
+}
+div.menuitem.verse.history1,
+div.menuitem.verse.history2,
+div.menuitem.notes.history,
+div.menuitem.portion.history,
+div.menuitem.search.history
+{
+   background-image: url("../images/list2.svg?version=1");
+}
+
+div.menuitem.verse.history1::before
+{
+   content: "V";
+}
+div.menuitem.verse.history2::before
+{
+   content: "C";
+}
+div.menuitem.verse.history1::before,
+div.menuitem.verse.history2::before
+{
+   position: absolute;
+   left: 50%;
+   top: 50%;
+
+   text-align: center;
+
+   transform: translate(-50%, -50%);
+
+   color: white;
+   opacity: 0.5;
+   font-size: 3em;
+   font-weight: bold;
+
+   pointer-events: none;
+}
+div.menuitem.verse.previous
+{
+   background-image: var(--arrow-image);
+   transform: scale(calc(-1 * var(--scale)), var(--scale)) !important;
+}
+div.menuitem.verse.next
+{
+   background-image: var(--arrow-image);
+}
+
+div.menuitem.verse.navigate-group
+{
+   background-image: url("../images/navigate-group2.svg?version=2");
+}
+div.menuitem.verse.navigate-book
+{
+   background-image: url("../images/navigate-book4.svg?version=1");
+}
+div.menuitem.verse.navigate-chapter
+{
+   background-image: url("../images/navigate-chapter3.svg?version=2");
+}
+div.menuitem.verse.navigate
+{
+   background-image: url("../images/navigate2.svg?version=1");
+}
+div.menuitem.parallel.version
+{
+   background-image: var(--book-image);
+   background-color: hsla(var(--hue-black), var(--saturation-black), var(--lightness-black), var(--button-opacity));
+   border-radius: var(--radius-2) var(--radius-2) var(--radius-1) var(--radius-2);
+}
+div.menuitem.parallel.version::after
+{
+   content: var(--parallel-version);
+   display: block;
+   color: white;
+   text-align: center;
+   font-weight: bold;
+   margin-top: var(--medium-gap);
+}
+body.note-active div.menu
+{
+   background-image: var(--write-image);
+   transform: none !important;
+   opacity: 1;
+   border-radius: var(--radius-2) var(--radius-2) var(--radius-1) var(--radius-2);
+}
+
+div.menuitems.link > div.menuitem
+{
+   --scale: 0.75;
+   --offset: calc(var(--image-size) * 0.5);
+
+   width: calc(var(--menu-item-size) * var(--link-scale));
+   background-position: calc(50% + (var(--offset) * 0.5)) 50%;
+   border-bottom-left-radius: var(--radius-1);
+}
+div.menuitems.link > div.menuitem::after
+{
+   content: "";
+   display: block;
+   position: var(--menu-positioning-method);
+   left: 0px;
+   top: 0px;
+   width: 100%;
+   height: 100%;
+   opacity: var(--default-opacity);
+
+   background-repeat: no-repeat;
+   background-position: calc(50% - (var(--offset) * 1.3)) 50%;
+   background-size: calc(var(--image-size) * var(--scale));
+
+   pointer-events: none;
+}
+div.menuitems.link > div.menuitem.speech::after
+{
+   background-image: var(--speech-image);
+}
+div.menuitems.link > div.menuitem.search::after
+{
+   background-image: var(--search-image);
+}
+div.menuitems.link > div.menuitem.portion::after
+{
+   background-image: url("../images/portion.svg?version=2");
+}
+div.menuitems.link > div.menuitem.notes::after
+{
+   background-image: var(--notes-image);
+}
+div.menuitems.link > div.menuitem.verse::after
+{
+   background-image: var(--book-image);
+}
+
+
+div.menuitem.verse.copy
+{
+   background-image: url("../images/copy6.svg");
+}
+div.menuitem.search.bookmark, div.menuitem.portion.bookmark, div.menuitem.verse.reading
+{
+   background-image: url("../images/bookmark.svg?version=1");
+}
+div.menuitem.portion.breakfast
+{
+   background-image: url("../images/meal/spoon_knife.svg?version=1");
+}
+div.menuitem.portion.lunch
+{
+   background-image: url("../images/meal/fork_spoon.svg?version=2");
+}
+div.menuitem.portion.dinner
+{
+   background-image: url("../images/meal/knife_fork.svg?version=1");
+}
+div.menuitem.portion.date
+{
+   background-image: url("../images/date2.svg?version=1");
+}
+div.menuitem.verse.find, div.menuitem.portion.find, div.menuitem.notes.find, div.menuitem.speech.find, div.menuitem.search.find,
+div.menuitem.option.find
+{
+   background-image: var(--find-image);
+}
+div.menuitem.speech.play
+{
+   background-image: url("../images/play01.svg");
+}
+div.menuitem.speech.scroll
+{
+   background-image: url("../images/scroll_normal.svg");
+   background-size: calc(var(--image-size) * 0.75);
+}
+div.menuitem.speech.continue
+{
+   background-image: url("../images/doublearrow.svg?version=2");
+}
+div.menuitem.verse.speech
+{
+   background-image: var(--speech-image);
+}
+div.menuitem.verse.speech.play
+{
+   background-image: var(--speech-image);
+}
+div.menuitem.verse.speech.slow
+{
+   background-image: url("../images/scroll_slow.svg");
+   background-size: calc(var(--image-size) * 0.5);
+}
+div.menuitem.verse.speech.normal
+{
+   background-image: url("../images/scroll_normal.svg");
+   background-size: calc(var(--image-size) * 0.75);
+}
+div.menuitem.verse.speech.fast
+{
+   background-image: url("../images/scroll_fast.svg");
+   background-size: var(--image-size);
+}
+div.menuitem.search.mode
+{
+   background-image: url("../images/path.svg?version=1");
+}
+div.menuitem.search.filter, div.menuitem.notes.filter
+{
+   background-image: var(--filter-image);
+}
+div.menuitem.search.case
+{
+   background-image: url("../images/camel3.svg?version=1");
+}
+div.menuitem.search
+{
+   background-image: var(--search-image);
+   background-color: hsla(var(--hue-search-blue), var(--saturation-search-blue), var(--lightness-search-blue), var(--button-opacity));
+}
+div.menuitem.speech
+{
+   background-image: var(--speech-image);
+   background-color: hsla(var(--hue-orange), var(--saturation-orange), var(--lightness-orange), var(--button-opacity));
+   background-color: hsla(var(--hue-green), var(--saturation-green), var(--lightness-green), var(--button-opacity));
+}
+div.menuitem.refresh
+{
+   background-image: url("../images/refresh.svg");
+}
+div.menuitem.sort
+{
+   background-image: url("../images/sort.svg?version=2");
+}
+div.menuitem.image
+{
+   background-image: url("../images/image.svg");
+}
+div.menuitem.lock
+{
+   background-image: url("../images/swipe.svg");
+}
+div.menuitem.lock.xxxlocked
+{
+   background-image: var(--lock-image);
+}
+div.menuitem.playOnSelect
+{
+   background-image: url("../images/playOnSelect.svg?version=8");
+}
+div.menuitem.inline
+{
+   background-image: var(--notes-image);
+}
+div.menuitem.highlight
+{
+   background-image: url("../images/highlight.svg");
+}
+div.menuitem.footer
+{
+   background-image: url("../images/footer.svg");
+}
+div.menuitem.settings
+{
+   background-image: url("../images/settings.svg?version=1");
+}
+div.menuitem.theme
+{
+   background-image: url("../images/daynight.svg");
+}
+div.menuitem.help
+{
+   xxxbackground-image: url("../images/signpost2.svg?version=1");
+   background-image: url("../images/help/05.svg?version=1");
+}
+div.menuitem.option
+{
+   background-color: hsla(var(--hue-black), var(--saturation-black), var(--lightness-black), var(--button-opacity));
+}
+div.menuitem.random
+{
+   background-image: url("../images/random.svg?version=1");
+}
+
+/* #branching  Position menu toggle options horizontally to save vertical space ... */
+div.menuitem.option:nth-of-type(n+2):nth-of-type(-n+6)
+{
+   position: var(--menu-positioning-method);
+   right: calc(var(--mult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitem.option:nth-of-type(2)
+{
+   --mult: 5;
+}
+div.menuitem.option:nth-of-type(3)
+{
+   --mult: 4;
+}
+div.menuitem.option:nth-of-type(4)
+{
+   --mult: 3;
+}
+div.menuitem.option:nth-of-type(5)
+{
+   --mult: 2;
+}
+div.menuitem.option:nth-of-type(6)
+{
+   --mult: 1;
+}
+div.menuitem.option:nth-of-type(7)
+{
+   --mult: 5;
+
+   position: var(--menu-positioning-method);
+   right: calc(var(--mult) * (var(--size) + var(--gap) + var(--border)));
+   top: calc(2 * (var(--size) + var(--gap) + var(--border)));
+}
+
+div.menuitems.search div.menuitem.search:not(.bar):nth-of-type(n+1):nth-of-type(-n+3)
+{
+   position: absolute;
+   right: calc(var(--mult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.search div.menuitem.search:not(.bar):nth-of-type(1)
+{
+   --mult: 3;
+}
+div.menuitems.search div.menuitem.search:not(.bar):nth-of-type(2)
+{
+   --mult: 2;
+}
+div.menuitems.search div.menuitem.search:not(.bar):nth-of-type(3)
+{
+   --mult: 1;
+}
+
+div.menuitems.speech div.menuitem.speech:not(.bar):nth-of-type(n+1):nth-of-type(-n+2)
+{
+   position: absolute;
+   right: calc(var(--mult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.speech div.menuitem.speech:not(.bar):nth-of-type(1)
+{
+   --mult: 2;
+}
+div.menuitems.speech div.menuitem.speech:not(.bar):nth-of-type(2)
+{
+   --mult: 1;
+}
+
+div.menuitems.notes div.menuitem.notes:not(.bar):first-child
+{
+   position: absolute;
+   right: calc(var(--mult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.notes div.menuitem.notes:not(.bar):nth-of-type(n+2):nth-of-type(-n+4)
+{
+   position: absolute;
+   left: calc(var(--mult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.notes div.menuitem.notes:not(.bar):nth-of-type(1)
+{
+   --mult: 1;
+}
+div.menuitems.notes div.menuitem.notes:not(.bar):nth-of-type(2)
+{
+   --mult: 3;
+}
+div.menuitems.notes div.menuitem.notes:not(.bar):nth-of-type(3)
+{
+   --mult: 2;
+}
+div.menuitems.notes div.menuitem.notes:not(.bar):nth-of-type(4)
+{
+   --mult: 1;
+}
+
+div.menuitems.portion div.menuitem.portion:not(.bar):nth-of-type(n+2):nth-of-type(-n+4)
+{
+   position: absolute;
+   left: calc(var(--mult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.portion div.menuitem.portion:not(.bar):nth-of-type(2)
+{
+   --mult: 1;
+}
+div.menuitems.portion div.menuitem.portion:not(.bar):nth-of-type(3)
+{
+   --mult: 2;
+}
+div.menuitems.portion div.menuitem.portion:not(.bar):nth-of-type(4)
+{
+   --mult: 3;
+}
+
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(10)
+{
+   left: 0;
+   position: relative !important;
+}
+
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(n+12):nth-of-type(-n+13)
+{
+   position: absolute;
+   left: calc(var(--mult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(12)
+{
+   --mult: 1;
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(13)
+{
+   --mult: 2;
+}
+
+/* Reference ... https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child */
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(n+1):nth-of-type(-n+9) /* First 10 menu items are for navigation */
+{
+   left: calc((1.5 + var(--mult)) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(3n+1):nth-of-type(-n+9) /* Refers to "previous" navigation items */
+{
+   --mult: 0;
+
+   position: var(--menu-positioning-method);
+   top: calc(var(--vmult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(3n+2):nth-of-type(-n+9) /* Refers to middle button navigation items */
+{
+   --mult: 1;
+
+   position: absolute;
+   top: calc(var(--vmult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(3n+3):nth-of-type(-n+9) /* Refers to "next" navigation items */
+{
+   --mult: 2;
+
+   position: absolute;
+   top: calc(var(--vmult) * (var(--size) + var(--gap) + var(--border)));
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(n+1):nth-of-type(-n+3)
+{
+   --vmult: 1;
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(n+4):nth-of-type(-n+6)
+{
+   --vmult: 2;
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(n+7):nth-of-type(-n+9)
+{
+   --vmult: 3;
+}
+div.menuitems.verse div.menuitem.verse:not(.bar):nth-of-type(10)
+{
+   --mult: 1;
+
+   position: absolute;
+}
+/* ... #branching */
+
+div.menuitem.option.off::before,
+div.menuitem.option.on::before,
+div.menuitem.commentary-lock.off::before
+{
+   --border-width: 1px;
+
+   content: "";
+   display: block;
+   position: var(--menu-positioning-method);
+   left: var(--border-width);
+   top: var(--border-width);
+   width: calc(100% - (2 * var(--border-width)));
+   height: calc(100% - (2 * var(--border-width)));
+   opacity: var(--default-opacity);
+   background-color: hsla(var(--hue-black), var(--saturation-black), var(--lightness-black), var(--button-opacity));
+   border-radius: var(--radius-2) var(--radius-1) var(--radius-2) var(--radius-2);
+   pointer-events: none;
+}
+div.menuitem.commentary-lock.off::before
+{
+   background-color: hsla(var(--hue-yellow), var(--saturation-yellow), var(--lightness-yellow), var(--button-opacity));
+}
+
+div.menuitem.disabled
+{
+   filter: brightness(0.5);
+   cursor: default !important;
+}
+
+/* ### HACK - allows menus to hide while still displaying the select box ### */
+div.menuitems.hidden #selectVerseHistory1,
+div.menuitems.hidden #selectVerseHistory2,
+div.menuitems.hidden #selectNotesHistory,
+div.menuitems.hidden #selectPortion,
+div.menuitems.hidden #inputDatePortion,
+div.menuitems.hidden #selectMode,
+div.menuitems.hidden #selectFilter,
+div.menuitems.hidden #selectCase,
+div.menuitems.hidden #selectContinue,
+div.menuitems.hidden #selectSpeaker,
+div.menuitems.hidden #selectCommentary,
+div.menuitems.hidden #selectSearchHistory
+{
+   visibility: visible;
+   pointer-events: none;
+}
+
+div.menu, div.menuitems
+{
+   pointer-events: auto;
+}
+
+select.portion,
+select.filter,
+select.mode,
+select.case,
+select.continue,
+select.speaker,
+select.commentary,
+select.verse,
+select.search,
+select.notes,
+select.parallel
+{
+   --hotspot-size: calc(var(--size) + var(--border));
+
+   position: var(--menu-positioning-method);
+   top: 0px;
+   width: var(--hotspot-size);
+   height: var(--hotspot-size);
+
+   background-color: rgba(255, 0, 0, 0.0);
+   opacity: 0.0;
+   cursor: pointer;
+}
+
+/* #submenus */
+div.menuitem.option.settings,
+div.menuitem.search.settings,
+div.menuitem.speech.settings,
+div.menuitem.notes.settings,
+div.menuitem.portion.settings,
+div.menuitem.verse.settings,
+div.menuitem.verse.previous,
+div.menuitem.verse.next
+{
+   --scale: calc(2 / 3);
+
+   transform: scale(var(--scale));
+   border-width: 1.75px !important;
+}
