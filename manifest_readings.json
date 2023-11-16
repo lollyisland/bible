@@ -1,0 +1,16 @@
+{
+  "name": "The Bible",
+  "short_name": "The Bible",
+  "lang": "en-US",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "images/favicon.png",
+      "sizes": "885x885",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#000000"
+}

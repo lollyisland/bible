@@ -1,0 +1,1 @@
+a:5:{s:6:"__user";s:6:"johnny";s:6:"inline";s:5:"false";s:9:"highlight";s:4:"true";s:5:"theme";s:4:"dark";s:7:"chapter";s:5:"1Pet3";}
